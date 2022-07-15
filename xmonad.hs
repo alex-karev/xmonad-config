@@ -50,7 +50,7 @@ import qualified Data.Map as M
 import Data.List
 
 --Sound Settings
-playBeep             = "canberra-gtk-play -i bell"
+playBeep             = "canberra-gtk-play -i audio-volume-change"
 playScreen           = "canberra-gtk-play -i camera-shutter"
 playOpen             = "canberra-gtk-play -i dialog-information"
 

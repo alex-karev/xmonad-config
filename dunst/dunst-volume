@@ -25,4 +25,4 @@ dunstify -i $icon -h string:x-dunst-stack-tag:$msgTag \
 
 
 # Play the volume changed sound
-canberra-gtk-play -i bell
+canberra-gtk-play -i audio-volume-change
