@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Arbitrary but unique message tag
+msgTag="dunstvolume"
+
+# Change the volume using alsa(might differ if you use pulseaudio)
+
+if [[ "$1" == "-i" ]]; then
+    pamixer -i $2
+elif [[ "$1" == "-d" ]]; then
+    pamixer -d $2
+elif [[ "$1" == "-t" ]]; then
+    pamixer -t
+fi
+
+volume=$(pamixer --get-volume-human)
+mute=$(pamixer --get-mute)
+icon="audio-volume-high-symbolic"
+if [[ "$mute" == "true" ]]; then
+    icon="audio-volume-muted-symbolic"
+fi
+
+dunstify -i $icon -h string:x-dunst-stack-tag:$msgTag \
+    -h int:value:"$volume" "Volume: $volume"
+
+
+# Play the volume changed sound
+canberra-gtk-play -i bell

@@ -1,0 +1,9 @@
+@import "config.rasi"
+
+window {
+    location: west;
+    anchor: west;
+    height: 100%;
+    width: 450px;
+    orientation: horizontal;
+    }

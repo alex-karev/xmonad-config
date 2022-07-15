@@ -1,0 +1,63 @@
+Config {
+   font           = "xft:Hack:size=12:bold,Font Awesome 5 free:size=12:regular"
+   , bgColor      = "#282828"
+   , fgColor      = "#ebdbb2"
+   , alpha        = 225
+   , position     = TopSize C 100 30
+   , lowerOnStart = True
+   , hideOnStart  = False
+   , allDesktops  = True
+   , persistent   = True
+   , iconRoot     = "/home/alex/.xmonad/icons/"
+   , commands     = [
+         -- Time and date
+           Run Date        "%b %d %a - %I:%M %p" "date" 10
+         -- Network
+         , Run Wireless   "wlp0s20f3" ["-t", " <quality>%"] 10
+         -- Keyboard layout 
+		 --, Run Com        "get-ibus-layout" [] "keyboard" 5
+         , Run Kbd [("us", "En"),("ru","Ru")]
+         -- Network Down/Up 
+		 , Run DynNetwork ["-t", " <rx>  <tx>", "-S", "True", "c", "2"] 10
+         -- Screen brightness 
+		 --, Run Com        "xbacklight-percent" [] "brightness"  15
+         -- Volume 
+	   	 --, Run Alsa       "default" "Master" [
+         --                                    "-t", "<status> <volume>%"
+         --                                  , "--", "-O", "", "-o", ""
+         --                                  , "-c", "#689d6a", "-C", "#689d6a"
+         --                                  ]
+         -- Battery 
+		 , Run BatteryP   ["BAT0"]           [
+                                               "-t", "<acstatus> <left>%"
+                                             , "--", "-O", ""
+                                             , "-i", ""
+                                             , "-o", ""
+                                             ] 20
+         -- RAM
+		 , Run Memory     ["-t", " <usedratio>%"] 20
+         -- CPU
+		 , Run Cpu        ["-t", " <total>%"] 20
+         -- Workspaces
+		 , Run UnsafeStdinReader
+         -- Play button
+		 --, Run Com        "player-cli" ["button"] "playbutton" 15
+		 --, Run Com        "player-cli" ["title"] "songname" 5
+   ]
+   , sepChar  = "%"
+   , alignSep = "}{"
+   , template = "<action=`rofi -config ~/.xmonad/rofi/sidebar.rasi -show drun`> <box type=Bottom width=4 mb2 color=#fabd2f><fc=#fabd2f></fc></box> </action>\
+   \%UnsafeStdinReader%\
+   \}%date%{\
+   \<box type=Bottom width=4 mb2 color=#cc241d><fc=#cc241d>%dynnetwork%</fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#d65d0e><fc=#d65d0e><action=`urxvt -e nmtui`>%wlp0s20f3wi%</action></fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#d79921><fc=#d79921>%battery%</fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#b8bb26><fc=#b8bb26><action=`urxvt -e gotop`>%cpu%</action></fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#83a598><fc=#83a598><action=`urxvt -e gotop`>%memory%</action></fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#458588><fc=#458588><action=`player-cli toggle`></action></fc></box>\
+   \  <box type=Bottom width=4 mb2 color=#b16286><fc=#b16286><action=`ibus engine xkb:us::eng`> %kbd%</action></fc></box> "
+
+-- <box type=Bottom width=4 mb2 color=#689d6a><fc=#689d6a><action=`pavucontrol`>%alsa:default:Master%</action></fc></box>
+-- <box type=Bottom width=4 mb2 color=#458588><fc=#458588> %brightness%</fc></box>\
+
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+pkill trayer || trayer --transparent true --tint 3946550 --alpha 0 --width 10 --edge top --distancefrom top --distance 30 #--distancefrom left --distance 200

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Arbitrary but unique message tag
+msgTag="dunstbrightness"
+
+# Change the volume using alsa(might differ if you use pulseaudio)
+
+if [[ "$1" == "-inc" ]]; then
+    sudo xbacklight -inc $2
+elif [[ "$1" == "-dec" ]]; then
+    sudo xbacklight -dec $2
+elif [[ "$1" == "-set" ]]; then
+    sudo xbacklight -set $2
+fi
+
+brightness=$(sudo xbacklight -get)
+icon="display-brightness-symbolic"
+
+dunstify -i $icon -h string:x-dunst-stack-tag:$msgTag \
+    -h int:value:"$brightness" "Brightness: $brightness"
