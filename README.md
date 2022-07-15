@@ -1,7 +1,7 @@
 # Xmonad dotfiles. Gruvbox theme
 My xmonad, xmobar and rofi configuration
 
-<img src="https://github.com/alex-karev/homepage/raw/main/screenshot.png">
+<img src="https://github.com/alex-karev/xmonad-config/raw/main/screenshot.png">
 
 ## Features
 * Using same tags on multiple screens
