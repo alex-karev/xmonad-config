@@ -90,7 +90,7 @@ decreaseVolume       = "$HOME/.xmonad/dunst/dunst-volume -d 5"
 muteVolume           = "$HOME/.xmonad/dunst/dunst-volume -t"
 myWallpaper          = "feh --bg-scale $HOME/.wallpaper.jpg"
 myRestart            = "killall xmobar & xmonad --recompile; xmonad --restart"
-myLocker             = "xsecurelock"
+myLocker             = "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock"
 
 -- Window border
 myBorderWidth = 2
@@ -422,6 +422,7 @@ myManageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> composeAll
     , className =? "com.gitlab.librebob.Athenaeum"  --> doShift ( myWorkspaces !! 3 )
 
     , className =? "mpv"             --> doShift ( myWorkspaces !! 4 )
+    , className =? "Stremio"             --> doShift ( myWorkspaces !! 4 )
     , className =? "FreeTube"        --> doShift ( myWorkspaces !! 4 )
     , className =? "YouTube Music"   --> doShift ( myWorkspaces !! 4 )
     , className =? "fluent-reader"   --> doShift ( myWorkspaces !! 4 )
