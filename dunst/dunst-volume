@@ -21,7 +21,7 @@ if [[ "$mute" == "true" ]]; then
 fi
 
 dunstify -i $icon -h string:x-dunst-stack-tag:$msgTag \
-    -h int:value:"$volume" "Volume: $volume"
+    -h int:value:"$volume" -t 800 "Volume: $volume"
 
 
 # Play the volume changed sound

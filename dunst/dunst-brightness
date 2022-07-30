@@ -17,4 +17,4 @@ brightness=$(sudo xbacklight -get)
 icon="display-brightness-symbolic"
 
 dunstify -i $icon -h string:x-dunst-stack-tag:$msgTag \
-    -h int:value:"$brightness" "Brightness: $brightness"
+    -h int:value:"$brightness" -t 800 "Brightness: $brightness"
