@@ -6,14 +6,4 @@ configuration {
     sidebar-mode: true;
 }
 
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-
-window {
-   width: 700;
-   height: 500;
-}
-
-element-icon {
-    size: 5ch;
-}
-
+@theme "~/.xmonad/rofi/theme.rasi"

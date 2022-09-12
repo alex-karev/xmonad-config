@@ -76,6 +76,7 @@ myNotes              = "flatpak run net.cozic.joplin_desktop"
 myRss                = "/opt/fluent-reader/fluent-reader"
 mySystemMonitor      = myTerminalOpen++"gotop"
 myMusicPlayer        = "youtube-music &"++playOpen
+myScratchpad         = "tdrop -ma -w -4 -y 60 urxvt"
 --Tray (tint is hex -> int)
 myTray               = "$HOME/.xmonad/scripts/toggle-tray"
 --Environment
@@ -158,6 +159,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   --, ((modm,               xK_z ), sendMessage FirstLayout)
   -- Toggle Full layout
   , ((modm,               xK_f     ), sendMessage $ Toggle NBFULL)
+  -- Toogle Scratchpad
+  --, ((modm,               xK_0     ), dynamicNSPAction "dyn1")
+  -- Add/Remove window from scratchpad
+  --, ((modm .|. shiftMask, xK_0     ), withFocused $ toggleDynamicNSP "dyn1")
+  -- Toogle Scratchpad
+  , ((modm,               xK_0     ), spawn $ myScratchpad)
 
   --
   -- Window manipulations
@@ -424,6 +431,7 @@ myManageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> composeAll
     , className =? "mpv"             --> doShift ( myWorkspaces !! 4 )
     , className =? "Stremio"             --> doShift ( myWorkspaces !! 4 )
     , className =? "FreeTube"        --> doShift ( myWorkspaces !! 4 )
+    , className =? "netease-cloud-music" --> doShift ( myWorkspaces !! 4 )
     , className =? "YouTube Music"   --> doShift ( myWorkspaces !! 4 )
     , className =? "fluent-reader"   --> doShift ( myWorkspaces !! 4 )
 
